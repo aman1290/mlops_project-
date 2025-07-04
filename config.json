@@ -1,0 +1,6 @@
+{
+    "api_url": "http://localhost:11434/api/generate",
+    "tts_rate": 150,
+    "tts_volume": 0.9,
+    "activation_phrase": "hello tutor"
+}

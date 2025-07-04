@@ -1,0 +1,32 @@
+import requests 
+
+# Define the API URL
+url = "http://localhost:11434/api/generate"
+
+# Payload for the POST request
+data = {
+    "model": "tinyllama",
+    "prompt": "Why is the sky blue?",
+    "stream": False,
+}
+
+# Headers for the request
+headers = {
+    "Content-Type": "application/json"
+}
+
+# Send the POST request
+try:
+    response = requests.post(url, json=data, headers=headers)
+
+    # Check the response status
+    if response.status_code == 200:
+        print("Response from Ollama:\n")
+        value = response.json()  # Parse JSON response
+        print("The type of the response value:", type(value))
+        print("Response content:", value.get("response", "No 'response' key found in the output."))
+    else:
+        print(f"Error: {response.status_code} - {response.text}")
+
+except requests.exceptions.RequestException as e:
+    print(f"Request failed: {e}")
